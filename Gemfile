@@ -54,3 +54,32 @@ end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+
+# fakeowe dane
+gem 'faker'
+
+# otwieranie email w przegladarce
+gem 'letter_opener', group: :development
+
+# obrazki
+gem 'carrierwave'
+gem 'mini_magick'
+
+# proste formularze
+gem 'simple_form'
+
+# paginacja
+gem 'kaminari'
+
+gem "twitter-bootstrap-rails"
+
+gem 'htmlbeautifier'
+
+# formularze wyszukiwania
+gem 'ransack'
+
+# wiele jezykow
+gem 'rails-i18n'
+
+# maszyna stanow -statusuw
+gem 'statesman'
