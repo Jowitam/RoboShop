@@ -1,2 +1,21 @@
-<h1>Products#show</h1>
-<p>Find me in app/views/products/show.html.erb</p>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-5">
+        <h1><%= Faker::Hacker.noun %></h1>
+        <p class="lead"><%= Faker::Hacker.say_something_smart %></p>
+        <%= simple_format(Faker::Lorem.paragraphs(3).join("\n\n"))%>
+
+        <p class="lead"><%= number_to_currency(Faker::Number.decimal(2,2)) %></p>
+
+        <p>
+        <%= link_to "#", class: "btn btn-primary" do %>
+        <span class="fa fa-shopping-cart"></span> Dodaj do koszyka
+        <% end %>
+        </p>
+    </div>
+    <div class="col-md-7">
+        <%= image_tag Faker::Placeholdit.image(size: '640x480', format:'jpg', background_color:'cccccc'), class: "img-responsive"  %>
+    </div>
+
+  </div>
+</div>
