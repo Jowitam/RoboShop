@@ -4,7 +4,7 @@
       <div class="col-md-4">
         <div class="thumbnail">
           <%= link_to product_path(product) do %> 
-            <%= image_tag product.photo.url if product.photo.url %>
+            <%= image_tag product.photo.url(:thumb) if product.photo.url %>
             
           <% end %>
           <div class="caption">

@@ -1,11 +1,11 @@
 <div class="container-fluid">
   <div class="row">
     <div class="col-md-5">
-        <h1><%= Faker::Hacker.noun %></h1>
-        <p class="lead"><%= Faker::Hacker.say_something_smart %></p>
-        <%= simple_format(Faker::Lorem.paragraphs(3).join("\n\n"))%>
+        <h1><%= @product.name %></h1>
+        <p class="lead"><%= @product.description %></p>
+        <%= simple_format(@product.long_description)%>
 
-        <p class="lead"><%= number_to_currency(Faker::Number.decimal(2,2)) %></p>
+        <p class="lead"><%= number_to_currency(@product.price) %></p>
 
         <p>
         <%= link_to "#", class: "btn btn-primary" do %>
@@ -14,7 +14,7 @@
         </p>
     </div>
     <div class="col-md-7">
-        <%= image_tag Faker::Placeholdit.image(size: '640x480', format:'jpg', background_color:'cccccc'), class: "img-responsive"  %>
+    <%= image_tag @product.photo.url(:details), class: "img-responsive" if @product.photo.url %>
     </div>
 
   </div>
