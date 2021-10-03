@@ -3,16 +3,16 @@
     <% slice.each do |product| %>
       <div class="col-md-4">
         <div class="thumbnail">
-          <%= link_to product_path(1) do %>
-            <%= image_tag Faker::Placeholdit.image(size: '640x480', format:'jpg', background_color:'cccccc') %>
+          <%= link_to product_path(product) do %>
+            <%= image_tag product.photo.url(:thumb) %>
           <% end %>
           <div class="caption">
-            <h3><%= link_to Faker::Hacker.noun.titleize, product_path(1) %></h3>
-            <p><%= simple_format(truncate(Faker::Hacker.say_something_smart, length: 90)) %> </p>
-            <p class="lead"><%= number_to_currency Faker::Number.decimal(2,2) %></p>
+            <h3><%= link_to product.name %></h3>
+            <p><%= simple_format(truncate(product.description, length: 90)) %> </p>
+            <p class="lead"><%= number_to_currency product.price %></p>
             <p>
               <%= link_to "#", class: "btn btn-primary" do %>
-                <span class="fa fa-shopping-cart"></span>Dodaj do koszyka
+                <span class="fa fa-shopping-cart"></span>  Dodaj do koszyka
               <% end %>
             </p>
           </div>
