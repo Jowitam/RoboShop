@@ -1,3 +1,5 @@
-<h1>Nazwa kategorii</h1>
+<h1><%=@category.name %></h1>
 
 <%= render partial: 'products/products', locals: {products: (1..9)} %>
+
+<%= paginate @products %>
