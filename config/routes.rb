@@ -6,7 +6,7 @@ Rails.application.routes.draw do
 
 
   root to: "products#index"
-  resources :products, only: [:index, :show]
-  resources :categories, only: [:show]
+  resources :products, only: [:index, :show], path: "produkt"
+  resources :categories, only: [:show], path: "kategoria"
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
