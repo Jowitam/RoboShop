@@ -17,11 +17,11 @@
           <a class="navbar-brand" href="<%= root_path %>">RoboShop</a>
         </div>
         <ul class="nav navbar-nav">
-          <li class="active"><a href="#">Start</a></li>
-          <li><a href="#">Polityka prywatności</a></li>
-          <li><a href="#">Regulamin</a></li>
-          <li><a href="#">Dostawa i płatność</a></li>
-          <li><a href="#">O sklepie</a></li>
+          <li <% if [params[:controller], params[:action]]==["products", "index"] %>class="active"<% end %>><%= link_to "Start", root_path %></li>
+          <li <% if [params[:controller], params[:action]]==["static", "privacy"] %>class="active"<% end %>><%= link_to "Polityka prywatności", privacy_path %></li>
+          <li <% if [params[:controller], params[:action]]==["products", "terms"] %>class="active"<% end %>><%= link_to "Regulamin", terms_path %></li>
+          <li <% if [params[:controller], params[:action]]==["products", "shipping"] %>class="active"<% end %>><%= link_to "Dostawa i płatność", shipping_path %></li>
+          <li <% if [params[:controller], params[:action]]==["products", "about"] %>class="active"<% end %>><%= link_to "O sklepie", about_path %></li>
         </ul>
       </div>
     </nav>
