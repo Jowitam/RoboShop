@@ -1,4 +1,14 @@
 Rails.application.routes.draw do
+  namespace :admin do
+    get 'categories/index'
+    get 'categories/new'
+    get 'categories/edit'
+  end
+  namespace :admin do
+    get 'products/index'
+    get 'products/new'
+    get 'products/edit'
+  end
   get 'regulamin', to: "static#terms", as: :terms
   get 'polityka-prywatnosci', to: "static#privacy", as: :privacy
   get 'dostawy', to: "static#shipping", as: :shipping
