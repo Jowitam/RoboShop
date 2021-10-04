@@ -10,7 +10,7 @@
     <nav class="navbar navbar-default navbar-static-top">
       <div class="container">
         <div class="navbar-header">
-          <a class="navbar-brand" href="<%= admin_products_path %>">RoboShop::Admin</a>
+          <a class="navbar-brand" href="<%= admin_root_path %>">RoboShop::Admin</a>
         </div>
         <ul class="nav navbar-nav">
           <li <% if params[:controller] == "admin/products" %>class="active"<% end %>><%= link_to "Produkty", admin_products_path %></li>

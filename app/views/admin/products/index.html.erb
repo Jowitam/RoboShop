@@ -1,2 +1,30 @@
-<h1>Admin::Products#index</h1>
-<p>Find me in app/views/admin/products/index.html.erb</p>
+<h1>Produkty</h1>
+
+<%= link_to new_admin_product_path, class: "btn btn-success" do %>
+  <span class="fa fa-plus"></span> Dodaj nowy produkt
+<% end %>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Nazwa</th>
+      <th>Cena</th>
+      <th>Kategoria</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @products.each do |product| %>
+      <tr>
+        <td><%= product.name %></td>
+        <td><%= number_to_currency product.price %></td>
+        <td><%= product.category.name %></td>
+        <td>
+          <%= link_to "Edycja", edit_admin_product_path(product), class: "btn btn-default btn-xs" %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<% paginate @products %>
