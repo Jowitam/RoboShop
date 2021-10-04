@@ -22,7 +22,7 @@ class Admin::ProductsController < Admin::BaseController
 
   def update 
     @product = Product.find(params[:id])
-    if @product.update_attributes(product_params)
+    if @product.update(product_params)
       redirect_to admin_products_path, notice: "Zmieniono produkt."
     else
       render action: :edit

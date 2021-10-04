@@ -22,7 +22,7 @@ class Admin::CategoriesController < Admin::BaseController
 
   def update 
     @category = Category.find(params[:id])
-    if @category.update_attributes(category_params)
+    if @category.update(category_params)
       redirect_to admin_categories_path, notice: "Zmieniono kategorię."
     else
       render action: :edit
