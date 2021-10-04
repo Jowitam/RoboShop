@@ -1,2 +1,24 @@
-<h1>Admin::Categories#index</h1>
-<p>Find me in app/views/admin/categories/index.html.erb</p>
+<h1>Kategorie</h1>
+
+<%= link_to new_admin_category_path, class: "btn btn-success" do %>
+  <span class="fa fa-plus"></span> Dodaj nową kategorię
+<% end %>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Nazwa</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @categories.each do |category| %>
+      <tr>
+        <td><%= category.name %></td>
+        <td>
+          <%= link_to "Edycja", edit_admin_category_path(category), class: "btn btn-default btn-xs" %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
