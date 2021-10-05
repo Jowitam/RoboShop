@@ -3,6 +3,16 @@
 <%= link_to new_admin_product_path, class: "btn btn-success" do %>
   <span class="fa fa-plus"></span> Dodaj nowy produkt
 <% end %>
+<p></p>
+<div class="search-form">
+  <%= search_form_for [:admin, @q] do |f| %>
+    <%= f.search_field :name_or_description_or_long_description_cont, placeholder:  "Szukaj tekstu" %>
+    <%= f.search_field :price_gt, placeholder: "Cena >" %>
+
+    <%= f.submit "Szukaj" %>
+  <% end %>
+</div>
+<p></p>
 
 <table class="table table-striped">
   <thead>

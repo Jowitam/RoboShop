@@ -1,6 +1,7 @@
 class Admin::ProductsController < Admin::BaseController
   def index
-    @products = Product.page(params[:page]).per(30)
+    @q = Product.ransack(params[:q])
+    @products = @q.result(distinct: true).page(params[:page]).per(30)
   end
 
   def new
