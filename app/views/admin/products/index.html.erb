@@ -17,9 +17,9 @@
 <table class="table table-striped">
   <thead>
     <tr>
-      <th>Nazwa</th>
-      <th>Cena</th>
-      <th>Kategoria</th>
+      <th><%= sort_link(@q, :name, "Nazwa") %></th>
+      <th><%= sort_link(@q, :price, "Cena") %></th>
+      <th><%= sort_link(@q, :category_id, "Kategoria") %></th>
       <th></th>
     </tr>
   </thead>
