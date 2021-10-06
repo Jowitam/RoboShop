@@ -81,5 +81,5 @@ gem 'ransack'
 # wiele jezykow
 gem 'rails-i18n'
 
-# maszyna stanow -statusuw
+# maszyna stanow -statusow
 gem 'statesman'
