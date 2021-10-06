@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  get 'cart/show'
+  get 'cart/edit'
+  get 'cart/confirmation'
   namespace :admin do
     root to: "products#index"
     resources :products
