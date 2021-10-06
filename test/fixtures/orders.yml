@@ -1,0 +1,11 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  comment: MyText
+  shipping_type: one
+  shipping_cost: 9.99
+
+two:
+  comment: MyText
+  shipping_type: two
+  shipping_cost: 9.99
