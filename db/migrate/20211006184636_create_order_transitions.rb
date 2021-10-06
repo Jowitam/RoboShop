@@ -2,7 +2,7 @@ class CreateOrderTransitions < ActiveRecord::Migration[6.1]
   def change
     create_table :order_transitions do |t|
       t.string :to_state, null: false
-      t.text :metadata, default: {}
+      t.text :metadata, default: "{}"
       t.integer :sort_key, null: false
       t.integer :order_id, null: false
       t.boolean :most_recent, null: false

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_10_06_173345) do
+ActiveRecord::Schema.define(version: 2021_10_06_184636) do
 
   create_table "addresses", force: :cascade do |t|
     t.string "first_name"
@@ -41,6 +41,18 @@ ActiveRecord::Schema.define(version: 2021_10_06_173345) do
     t.datetime "updated_at", precision: 6, null: false
     t.index ["order_id"], name: "index_line_items_on_order_id"
     t.index ["product_id"], name: "index_line_items_on_product_id"
+  end
+
+  create_table "order_transitions", force: :cascade do |t|
+    t.string "to_state", null: false
+    t.text "metadata", default: "{}"
+    t.integer "sort_key", null: false
+    t.integer "order_id", null: false
+    t.boolean "most_recent", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["order_id", "most_recent"], name: "index_order_transitions_parent_most_recent", unique: true, where: "most_recent"
+    t.index ["order_id", "sort_key"], name: "index_order_transitions_parent_sort", unique: true
   end
 
   create_table "orders", force: :cascade do |t|
@@ -74,6 +86,7 @@ ActiveRecord::Schema.define(version: 2021_10_06_173345) do
   add_foreign_key "addresses", "orders"
   add_foreign_key "line_items", "orders"
   add_foreign_key "line_items", "products"
+  add_foreign_key "order_transitions", "orders"
   add_foreign_key "orders", "shipping_types"
   add_foreign_key "products", "categories"
 end
