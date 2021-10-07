@@ -8,4 +8,13 @@ class ApplicationController < ActionController::Base
             Order.new
         end
     end
+
+    def current_cart_or_create
+        c = current_cart
+        if c.new_record? 
+            c.save 
+            session[:order_id] = c.id
+        end
+        c
+    end
 end
