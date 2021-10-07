@@ -12,7 +12,7 @@
             <p><%= simple_format(truncate(product.description, length: 90)) %> </p>
             <p class="lead"><%= number_to_currency product.price %></p>
             <p>
-              <%= link_to add_product_cart_path, method: :post, class: "btn btn-primary" do %>
+              <%= link_to add_product_cart_path(product_id: product.id), method: :post, class: "btn btn-primary" do %>
                 <span class="fa fa-shopping-cart"></span>  Dodaj do koszyka
               <% end %>
             </p>
