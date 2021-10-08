@@ -3,7 +3,7 @@ class LineItem < ApplicationRecord
   belongs_to :order
 
   def full_price
-    unite_price * quantity
+    unit_price * quantity
   end
 
 end

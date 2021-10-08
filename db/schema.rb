@@ -57,7 +57,7 @@ ActiveRecord::Schema.define(version: 2021_10_06_184636) do
 
   create_table "orders", force: :cascade do |t|
     t.text "comment"
-    t.integer "shipping_type_id", null: false
+    t.integer "shipping_type_id"
     t.decimal "shipping_cost"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -87,6 +87,5 @@ ActiveRecord::Schema.define(version: 2021_10_06_184636) do
   add_foreign_key "line_items", "orders"
   add_foreign_key "line_items", "products"
   add_foreign_key "order_transitions", "orders"
-  add_foreign_key "orders", "shipping_types"
   add_foreign_key "products", "categories"
 end
