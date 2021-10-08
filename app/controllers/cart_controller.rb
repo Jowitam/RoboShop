@@ -32,6 +32,7 @@ class CartController < ApplicationController
       # o.save
     end
     redirect_back fallback_location: root_path
+    flash[:notice] = "Dodano produkt do koszyka"
   end
 
   def remove_product
@@ -42,6 +43,7 @@ class CartController < ApplicationController
       item.destroy
     end
     redirect_back fallback_location: root_path
+    flash[:notice] = "Usunięto produkt z koszyka"
   end
 
 end
