@@ -1,2 +1,36 @@
-<h1>Cart#show</h1>
-<p>Find me in app/views/cart/show.html.erb</p>
+<h1>Twój koszyk</h1>
+<% if @cart.line_items.empty? %>
+  <p>Twój koszyk jest pusty!</p>
+<% else %>
+  <table class="table table-striped">
+    <thead>
+      <th>Produkt</th>
+      <th>Liczba sztuk</th>
+      <th>Cena jednostkowa</th>
+      <th>Cena całkowita</th>
+      <th></th>
+    </thead>
+    <tbody>
+      <% @cart.line_items.each do |line_item| %>
+        <tr>
+          <td><%= link_to line_item.item_name, product_path(line_item.product) %></td>
+          <td><%= link_to line_item.quantity %></td>
+          <td><%= link_to line_item.unit_price %></td>
+          <td><%= link_to line_item.full_price %></td>
+          <td>
+            <%= link_to remove_product_cart_path(product_id: line_item.product.id), method: :post do %>
+              <span class="fa fa-trash-o "></span>
+            <% end %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+  <p>
+    <%= link_to edit_cart_path, class: "btn btn-success btn-lg" do %>
+      Przejdź dalej 
+      <span class="fa fa-step-forward"></span>
+    <% end %>
+  </p>
+<% end %>
