@@ -2,7 +2,7 @@ class Order < ApplicationRecord
   include Statesman::Adapters::ActiveRecordQueries[transition_class: OrderTransition, initial_state: :new]
   belongs_to :shipping_type
   has_many :line_items
-  has_one :address
+  has_one :address, :dependent => :destroy
 
   accepts_nested_attributes_for :address
   

@@ -10,6 +10,13 @@ class CartController < ApplicationController
   end
 
   def update
+    @cart = current_cart
+    if @cart.update(cart_attributes)
+      @cart.update_attribute(:shipping_cost, @cart.shipping_type.cost)
+      redirect_to confirmation_cart_path
+    else
+      render action: :edit
+    end
   end
 
   def confirmation
@@ -50,4 +57,19 @@ class CartController < ApplicationController
     flash[:notice] = "Usunięto produkt z koszyka"
   end
 
+  private
+  def cart_attributes
+    params.require(:order).permit(
+      :shipping_type_id,
+      :comment,
+      :address_attributes => [
+        :first_name,
+        :last_name,
+        :city,
+        :zip_code,
+        :street,
+        :email
+      ]
+    )
+  end
 end
