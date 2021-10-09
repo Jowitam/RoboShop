@@ -8,11 +8,9 @@ class Order < ApplicationRecord
   
   has_many :transitions, class_name: "OrderTransition", autosave: false
   
-  delegate :can_transition_to?, :transition_to!, :transition_to, :current_state, to: :state_machine
-
+  delegate :can_transition_to?, :current_state, :history, :last_transition, :last_transition_to, :transition_to!, :transition_to, :in_state?, to: :state_machine
   def state_machine
-    @state_machine ||= OrderStateMachine.new(self, transition_class: OrderTransition,
-                                                   association_name: :transitions)
+    @state_machine ||= OrderStateMachine.new(self, transition_class: OrderTransition, association_name: :transitions)
   end
 
   def full_cost

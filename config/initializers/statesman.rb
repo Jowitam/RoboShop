@@ -1,3 +1,3 @@
 Statesman.configure do
-    storage_adapter(Statesman::Adapters::ActiveRecord)
-  end
+  storage_adapter(Statesman::Adapters::ActiveRecord)
+end

@@ -23,6 +23,14 @@ class CartController < ApplicationController
     @cart = current_cart
   end
 
+  def finish
+    @cart = current_cart
+    @cart.transition_to :confirmed 
+    session.delete(:order_id)
+    flash[:notice] = "Dziękujemy za zamówienie!"
+    redirect_to root_path
+  end
+
   def add_product
     order = current_cart_or_create
     product = Product.find(params[:product_id])
