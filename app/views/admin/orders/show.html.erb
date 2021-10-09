@@ -1,2 +1,61 @@
-<h1>Admin::Orders#show</h1>
-<p>Find me in app/views/admin/orders/show.html.erb</p>
+<h1>Szczegóły zamówienia</h1>
+
+<div class="row">
+  <div class="col-md-6">
+    <table class="table table-striped">
+      <thead>
+        <th>Produkt</th>
+        <th>Liczba sztuk</th>
+        <th>Cena jednostkowa</th>
+        <th>Cena całkowita</th>
+      </thead>
+      <tbody>
+        <% @order.line_items.each do |line_item| %>
+          <tr>
+            <td><%= link_to line_item.item_name, product_path(line_item.product) %>
+            <td><%= line_item.quantity %></td>
+            <td><%= number_to_currency line_item.unit_price %></td>
+            <td><%= number_to_currency line_item.full_price %></td>
+          </tr>
+        <% end %>
+        <tr>
+          <td>Dostawa: <%= @order.shipping_type.name %></td>
+          <td></td>
+          <td colspan="2"><%= number_to_currency @order.shipping_cost %></td>
+        </tr>
+        <tr>
+          <td colspan="4"><hr/></td>
+        </tr>
+        <tr>
+          <th>Całość</th>
+          <td></td>
+          <td colspan="2"><%= number_to_currency @order.full_cost %></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="col-md-6">
+    <address class="address">
+      <%= @order.address.first_name %> <%= @order.address.last_name %>
+      <br/>
+      <%= @order.address.street %>
+      <br/>
+      <%= @order.address.zip_code %> <%= @order.address.city %>
+      <%= simple_format @order.comment%>
+    </address>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-6">
+  <h4>Zmiana statusu zamówienia</h4>
+    <%= form_for [:admin, @order] do |f| %>
+      <select name="state">
+        <% OrderStateMachine.states_map.each do |state_name, human_name| %>
+          <option value="<%= state_name %>" <% if !@order.can_transition_to?(state_name) && @order.current_state != state_name %> disabled="disabled"<% end %>><%= human_name %></option>
+        <% end %>
+      </select>
+      <%= f.submit "Zmień stan" %>
+    <% end %>
+  </div>
+</div>
