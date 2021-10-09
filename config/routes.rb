@@ -12,6 +12,7 @@ Rails.application.routes.draw do
     root to: "products#index"
     resources :products
     resources :categories  
+    resources :orders, only: [:index, :show, :update]
   end
 
   get 'regulamin', to: "static#terms", as: :terms

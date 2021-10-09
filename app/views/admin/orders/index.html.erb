@@ -1,0 +1,27 @@
+<h1>Zamówienia</h1>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>id</td>
+      <th>Data utworzenia</th>
+      <th>Status</th>
+      <th>Suma</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @orders.each do |order| %>
+      <tr>
+        <td>#<%= order.id %></td>
+        <td><%= l order.created_at, format: :long %></td>
+        <td><%= OrderStateMachine.states_map[order.current_state] %></td>
+        <td><%= number_to_currency order.full_cost %></td>
+        <td>
+          <%= link_to "Edycja", admin_order_path(order), class: "btn btn-default btn-xs" %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= paginate @orders %>

@@ -2,7 +2,7 @@
 <html>
   <head>
     <title>RoboShop - Admin</title>
-      <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
     <%= csrf_meta_tags %>
   </head>
@@ -15,6 +15,7 @@
         <ul class="nav navbar-nav">
           <li <% if params[:controller] == "admin/products" %>class="active"<% end %>><%= link_to "Produkty", admin_products_path %></li>
           <li <% if params[:controller] == "admin/categories" %>class="active"<% end %>><%= link_to "Kategorie", admin_categories_path %></li>
+          <li <% if params[:controller] == "admin/orders" %>class="active"<% end %>><%= link_to "Zamówienia", admin_orders_path %></li>
         </ul>
       </div>
     </nav>
