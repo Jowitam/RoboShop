@@ -1,2 +1,39 @@
-<h1>Cart#confirmation</h1>
-<p>Find me in app/views/cart/confirmation.html.erb</p>
+<h1>Potwierdzenie zamówienia</h1>
+
+<table class="table table-striped">
+  <thead>
+    <th>Produkt</th>
+    <th>Liczba sztuk</th>
+    <th>Cena jednostkowa</th>
+    <th>Cena całkowita</th>
+    <th></th>
+  </thead>
+  <tbody>
+    <% @cart.line_items.each do |line_item| %>
+      <tr>
+        <td><%= link_to line_item.item_name, product_path(line_item.product) %></td>
+        <td><%= link_to line_item.quantity %></td>
+        <td><%= number_to_currency line_item.unit_price %></td>
+        <td><%= number_to_currency line_item.full_price %></td>
+      </tr>
+    <% end %>
+    <tr>
+      <td>Dostawa: <%= @cart.shipping_type.name %></td>
+      <td></td>
+      <td colspan="2"><%= number_to_currency @cart.shipping_cost %></td>
+    </tr>
+    <tr>
+      <td colspan="4"><hr/></td>
+    </tr>
+    <tr>
+      <th>Całość</th>
+      <td></td>
+      <td colspan="6"><%= number_to_currency @cart.full_cost %></td>
+    </tr>
+  </tbody>
+</table>
+
+  <%= link_to finish_cart_path, method: :post, class: "btn btn-success btn-lg" do %>
+  <span class="fa fa-check"></span>
+  Potwierdzam zamówienie z obowiązkiem zapłaty
+<% end %>

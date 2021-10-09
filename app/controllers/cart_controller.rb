@@ -20,8 +20,8 @@ class CartController < ApplicationController
   end
 
   def confirmation
+    @cart = current_cart
   end
-
 
   def add_product
     order = current_cart_or_create
