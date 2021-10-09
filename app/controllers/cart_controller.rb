@@ -4,6 +4,9 @@ class CartController < ApplicationController
   end
 
   def edit
+    @cart = current_cart
+    @cart.build_address if @cart.address.blank?
+
   end
 
   def update
