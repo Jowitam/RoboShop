@@ -1,24 +1,5 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+Sklep internetowy z kursu Ruby on Rails z platformy Udemy 
+Ruby on Rails - programowanie od podstaw. 
+Pierwotnie kurs storzony pod Rails 4, obecna wersja przerobiona na Rails 6.
